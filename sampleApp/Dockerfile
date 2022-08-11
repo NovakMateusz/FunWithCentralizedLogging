@@ -1,9 +1,8 @@
 FROM python:slim-buster
 
-WORKDIR /app
-RUN mkdir logs
+WORKDIR /sampleApp
 
-COPY main.py main.py
+COPY app app
 COPY requirements.txt requirements.txt
 
 RUN pip install -r requirements.txt
@@ -11,4 +10,4 @@ RUN pip install -r requirements.txt
 EXPOSE 8000
 
 ENTRYPOINT [ "python" ]
-CMD [ "main.py" ]
+CMD [ "run_app.py" ]
