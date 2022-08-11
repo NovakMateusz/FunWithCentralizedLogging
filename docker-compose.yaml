@@ -22,6 +22,8 @@ services:
 
   sanic-app:
     image: sanic-app:latest
+    build:
+      context: ./app
     container_name: sanic-app
     ports:
       - "8000:8000"
