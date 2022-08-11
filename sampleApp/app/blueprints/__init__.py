@@ -6,5 +6,5 @@ main_blueprint = sanic.Blueprint('main_blueprint')
 
 @main_blueprint.route("/")
 async def home(request: sanic.Request):
-    logger.info(f"Incomming requests {request.headers['correlation-id']}")
+    logger.info(f"Incomming requests {request.headers['correlation_id']}")
     return sanic.response.text("hello world")
