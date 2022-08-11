@@ -16,13 +16,13 @@ services:
       - elastic
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9200"]
-      interval: 30s
+      interval: 5s
       timeout: 1s
-      retries: 5
+      retries: 20
 
-  flask-app:
-    image: flask-app
-    container_name: flask-app
+  sanic-app:
+    image: sanic-app:latest
+    container_name: sanic-app
     ports:
       - "8000:8000"
     depends_on:
