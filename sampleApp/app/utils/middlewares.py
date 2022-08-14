@@ -1,4 +1,3 @@
-from re import I
 import uuid
 import time
 
@@ -6,6 +5,7 @@ import sanic
 from sanic.log import logger
 
 __all__ = ['generate_correlation_id', 'inject_timer', 'calculate_request_time']
+
 
 async def generate_correlation_id(request: sanic.Request):
     if 'correlation_id' not in request.headers:
@@ -15,6 +15,7 @@ async def generate_correlation_id(request: sanic.Request):
 async def inject_timer(request: sanic.Request):
     if not hasattr(request.ctx, 'request_time'):
         request.ctx.request_time = time.time()
+
 
 async def calculate_request_time(request: sanic.Request, _: sanic.HTTPResponse):
     if hasattr(request.ctx, 'request_time'):
