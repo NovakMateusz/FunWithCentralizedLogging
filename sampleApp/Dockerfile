@@ -3,12 +3,11 @@ FROM python:slim-buster
 WORKDIR /sampleApp
 
 COPY app app
-COPY requirements.txt requirements.txt
-COPY run_app.py run_app.py
+COPY requirements requirements
+COPY manage.py manage.py
 
-RUN pip install -r requirements.txt
+RUN python -m manage --install docker
 
 EXPOSE 8000
 
-ENTRYPOINT [ "python" ]
-CMD [ "run_app.py" ]
+CMD ["uvicorn", "--host", "0.0.0.0", "--port", "8000","--no-access-log", "--factory", "app:create_app"]
