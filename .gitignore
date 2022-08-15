@@ -1,3 +1,4 @@
 .vscode
 sampleApp/venv
 __pycache__
+local.txt
