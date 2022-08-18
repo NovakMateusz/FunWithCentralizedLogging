@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file ./sampleApp/Dockerfile --tag sample-sanic-app:latest
+      run: docker build ./sampleApp --file ./sampleApp/Dockerfile --tag sample-sanic-app:latest
