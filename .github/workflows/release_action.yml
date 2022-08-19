@@ -1,0 +1,19 @@
+name: Release
+
+on:
+  push:
+    branches: 
+       - "release/[0-9]+.[0-9]+.[0-9]+"
+
+jobs:
+
+  build:
+    name: build Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Check env variables
+      run: env
