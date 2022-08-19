@@ -3,12 +3,12 @@ name: Release
 on:
   push:
     branches: 
-       - "release/[0-9]+.[0-9]+.[0-9]+"
+       - "release/[0-9]+.[0-9]+.[0-9]+*"
 
 jobs:
 
   build:
-    name: build Docker Image
+    name: Fun With GitHub Actions
     runs-on: ubuntu-latest
 
     steps:
@@ -17,3 +17,8 @@ jobs:
 
     - name: Check env variables
       run: env
+      
+    - name: Build Docker Image
+      run: | 
+        imageTag="$(echo ${GITHUB_REF_NAME} | grep -P '[0-9]+.[0-9]+.[0-9]+.*' -o)"
+        docker build ./sampleApp --file ./sampleApp/Dockerfile --tag sample-sanic-app:$imageTag
